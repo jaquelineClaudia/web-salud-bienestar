@@ -1,0 +1,203 @@
+import type { Collection, Product } from "./types";
+
+// Tienda simulada del prototipo. Datos técnicos tomados del encargo y del catálogo del fabricante
+// (docs/catalogo_bioenergy_dreams.md). Precios = PVP del fabricante, provisionales.
+
+const eur = (amount: string) => ({ amount, currencyCode: "EUR" as const });
+
+export const collections: Collection[] = [
+  {
+    handle: "descanso",
+    title: "Descanso",
+    description: "Colchones de muelles ensacados fabricados en España, toppers, almohadas, nórdicos y camas articuladas.",
+    image: { slot: "cat-descanso", altText: "Dormitorio con un colchón Bioenergy Dreams" },
+  },
+  {
+    handle: "masaje-y-relax",
+    title: "Masaje y relax",
+    description: "Centro de masaje Shiatsu ZEN y la línea Bioenergy for Life para tus ratos de calma en casa.",
+    image: { slot: "cat-masaje", altText: "Centro de masaje Shiatsu sobre un sillón" },
+  },
+  {
+    handle: "hogar-sano",
+    title: "Hogar sano",
+    description: "Plancha de vapor con ozono, aspirador sin cables y agua para casa, de la línea Bioenergy Home.",
+    image: { slot: "cat-hogar", altText: "Plancha portátil colgada en su base" },
+  },
+  {
+    handle: "magnetoterapia-y-ozono",
+    title: "Magnetoterapia y ozono",
+    description: "Equipos de magnetoterapia y generadores de ozono. Muy pronto, todos los modelos.",
+    image: { slot: "cat-magneto", altText: "Equipo de magnetoterapia" },
+  },
+];
+
+export const products: Product[] = [
+  {
+    id: "mock-plancha",
+    handle: "plancha-portatil-multifuncion",
+    title: "Plancha portátil multifunción",
+    vendorTitle: "Plancha con vapor, ozono y UV-C",
+    vendor: "Bioenergy Dreams",
+    line: "Bioenergy Home",
+    collection: "hogar-sano",
+    tagline: "Sin sacar la tabla de planchar.",
+    summary: "Vapor con ozono y luz UV-C, lista en menos de 40 segundos. Plancha en vertical o en horizontal.",
+    description:
+      "Una plancha ligera para el día a día: repasa camisas colgadas, cortinas o la ropa de cama sin sacar la tabla. Elige el tejido en el panel y ella ajusta la temperatura.",
+    price: eur("799.00"),
+    priceIsProvisional: true,
+    featuredImage: { slot: "plancha-principal", altText: "Plancha portátil multifunción Bioenergy Home" },
+    images: [
+      { slot: "plancha-principal", altText: "Plancha portátil multifunción, vista lateral" },
+      { slot: "plancha-sin-base", altText: "Plancha portátil fuera de su base" },
+      { slot: "plancha-uso-vertical", altText: "Planchado en vertical de una camisa colgada" },
+      { slot: "plancha-panel", altText: "Detalle del panel de mandos" },
+    ],
+    highlights: [
+      { value: "1500 W", label: "de potencia" },
+      { value: "< 40 s", label: "para tener vapor y ozono" },
+      { value: "1,8 kg", label: "de peso" },
+    ],
+    specs: [
+      {
+        title: "Potencia y vapor",
+        items: [
+          { label: "Potencia", value: "1500 W" },
+          { label: "Vapor y ozono", value: "en menos de 40 s" },
+          { label: "Depósito", value: "330 ml" },
+        ],
+      },
+      {
+        title: "Uso",
+        items: [
+          { label: "Temperaturas", value: "6, de 101 a 157 °C" },
+          { label: "Planchado", value: "vertical y horizontal" },
+          { label: "Suela", value: "cerámica con titanio" },
+        ],
+      },
+      {
+        title: "Tamaño",
+        items: [
+          { label: "Peso", value: "1,8 kg" },
+          { label: "Medidas", value: "455 × 123 × 106 mm" },
+          { label: "Base", value: "con gancho para colgar" },
+        ],
+      },
+    ],
+    chips: { title: "Programas para 6 tejidos", values: ["Nailon", "Lana", "Lino", "Seda", "Algodón", "Mezcla"] },
+    certifications: [], // pendiente: confirmar con el fabricante qué sellos tiene este modelo
+    // Posiciones de las notas del despiece en % sobre la foto (capa "cuerpo" o "base").
+    parts: [
+      { id: "panel", name: "Panel de mandos", detail: "Encendido y botones para elegir entre 6 temperaturas y 6 tejidos.", layer: "cuerpo", x: 21, y: 46 },
+      { id: "deposito", name: "Depósito de 330 ml", detail: "En la parte trasera, a la vista para saber cuánta agua queda.", layer: "cuerpo", x: 78, y: 26 },
+      { id: "suela", name: "Suela cerámica con titanio", detail: "Desliza sobre el tejido y sirve para planchar en vertical u horizontal.", layer: "cuerpo", x: 9, y: 82 },
+      { id: "base", name: "Base con gancho", detail: "Para dejarla apoyada al terminar o colgarla.", layer: "base", x: 66, y: 88 },
+    ],
+    financing: true,
+  },
+  {
+    id: "mock-aspirador",
+    handle: "aspirador-sin-cables-cyclone-led",
+    title: "Aspirador sin cables Cyclone LED",
+    vendor: "Bioenergy Dreams",
+    line: "Bioenergy Home",
+    collection: "hogar-sano",
+    summary: "Filtro HEPA 13 de 6 etapas, batería reemplazable y cabezal con luz para ver el polvo.",
+    description:
+      "Motor DC Cyclone, batería de 2200 mAh (hasta 40 min en modo Eco, según el fabricante), depósito de 0,7 L y accesorios para sofás, colchones, coche y rincones.",
+    priceIsProvisional: true,
+    featuredImage: { slot: "aspirador-principal", altText: "Aspirador sin cables Cyclone LED en su soporte de pared" },
+    images: [{ slot: "aspirador-principal", altText: "Aspirador sin cables Cyclone LED" }],
+    highlights: [
+      { value: "40 min", label: "en modo Eco" },
+      { value: "HEPA 13", label: "filtro de 6 etapas" },
+      { value: "2,3 kg", label: "de peso" },
+    ],
+    financing: true,
+  },
+  {
+    id: "mock-shiatsu",
+    handle: "centro-masaje-shiatsu-zen-premium",
+    title: "Centro de masaje Shiatsu ZEN Premium",
+    vendor: "Bioenergy Dreams",
+    line: "Bioenergy for Life",
+    collection: "masaje-y-relax",
+    summary: "8 rollers 3D, 9 airbags y calor por infrarrojos. Se coloca en tu silla o tu sofá.",
+    description:
+      "Portátil y plegable, con 3 intensidades, mando y apagado automático a los 15 minutos. Funciona sobre una silla, un sofá o cualquier base estable.",
+    priceIsProvisional: true,
+    featuredImage: { slot: "shiatsu-principal", altText: "Centro de masaje Shiatsu ZEN Premium sobre un sillón" },
+    images: [{ slot: "shiatsu-principal", altText: "Centro de masaje Shiatsu ZEN Premium" }],
+    financing: true,
+  },
+  {
+    id: "mock-biosport",
+    handle: "colchon-biosport",
+    title: "Colchón BioSport",
+    vendor: "Bioenergy Dreams",
+    collection: "descanso",
+    summary: "Colchón de muelles ensacados. Te ayudamos a elegir firmeza y medida en tu casa.",
+    description: "Te contamos materiales, firmeza y medidas disponibles en la visita de asesoramiento.",
+    price: eur("3299.00"),
+    priceIsProvisional: true,
+    featuredImage: { slot: "colchon-biosport", altText: "Colchón BioSport en un dormitorio" },
+    images: [{ slot: "colchon-biosport", altText: "Colchón BioSport" }],
+    financing: true,
+  },
+  {
+    id: "mock-electro-scudo",
+    handle: "colchon-electro-scudo-biobalance",
+    title: "Colchón Electro-Scudo Biobalance",
+    vendor: "Bioenergy Dreams",
+    collection: "descanso",
+    summary: "Colchón de la colección Bioenergy Dreams. Te ayudamos a elegir firmeza y medida en tu casa.",
+    description: "Te contamos materiales, firmeza y medidas disponibles en la visita de asesoramiento.",
+    priceIsProvisional: true,
+    featuredImage: { slot: "colchon-electro-scudo", altText: "Colchón Electro-Scudo Biobalance" },
+    images: [{ slot: "colchon-electro-scudo", altText: "Colchón Electro-Scudo Biobalance" }],
+    financing: true,
+  },
+  {
+    id: "mock-oxygen-clinic",
+    handle: "colchon-oxygen-clinic",
+    title: "Colchón Oxygen Clinic",
+    vendor: "Bioenergy Dreams",
+    collection: "descanso",
+    summary: "Colchón de la colección Bioenergy Dreams, con tejido estampado en azul.",
+    description: "Te contamos materiales, firmeza y medidas disponibles en la visita de asesoramiento.",
+    priceIsProvisional: true,
+    featuredImage: { slot: "colchon-oxygen-clinic", altText: "Colchón Oxygen Clinic" },
+    images: [{ slot: "colchon-oxygen-clinic", altText: "Colchón Oxygen Clinic" }],
+    financing: true,
+  },
+  {
+    id: "mock-adapta",
+    handle: "almohada-adapta-3-0",
+    title: "Almohada ADAPTA 3.0 configurable",
+    vendor: "Bioenergy Dreams",
+    collection: "descanso",
+    summary: "Una almohada que configuras a tu altura.",
+    description: "Te enseñamos a ajustarla en la visita para que quede a tu gusto.",
+    price: eur("169.00"),
+    priceIsProvisional: true,
+    featuredImage: { slot: "almohada-adapta", altText: "Almohada ADAPTA 3.0 sobre la cama" },
+    images: [{ slot: "almohada-adapta", altText: "Almohada ADAPTA 3.0" }],
+    financing: false,
+  },
+  {
+    id: "mock-biopure",
+    handle: "biopure-water",
+    title: "BIOPURE WATER",
+    vendor: "Bioenergy Dreams",
+    line: "Bioenergy Home",
+    collection: "hogar-sano",
+    summary: "Equipo de agua para casa de la línea Bioenergy Home.",
+    description: "Te explicamos instalación y mantenimiento en una visita sin compromiso.",
+    price: eur("3995.00"),
+    priceIsProvisional: true,
+    featuredImage: { slot: "biopure", altText: "Equipo BIOPURE WATER en una cocina" },
+    images: [{ slot: "biopure", altText: "BIOPURE WATER" }],
+    financing: true,
+  },
+];

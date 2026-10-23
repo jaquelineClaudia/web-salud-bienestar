@@ -1,26 +1,105 @@
 @import "tailwindcss";
 
+/* Tokens del contrato de diseño (DESIGN.md §2) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #1f4a42;
+  --ink-soft: #4a615a;
+  --paper: #f3f5f1;
+  --mint: #dcebe2;
+  --sage: #a9bfae;
+  --night: #0f2622;
+  --night-ink: #e4eee8;
+  --line: rgb(31 74 66 / 0.16);
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-paper: var(--paper);
+  --color-mint: var(--mint);
+  --color-sage: var(--sage);
+  --color-night: var(--night);
+  --color-night-ink: var(--night-ink);
+  --color-line: var(--line);
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+  --ease-calm: var(--ease-calm);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 1.125rem; /* 18 px mínimo, público mayor */
+  line-height: 1.6;
+}
+
+.font-serif {
+  font-variation-settings: "SOFT" 50, "WONK" 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 350;
+  font-variation-settings: "SOFT" 50, "WONK" 0;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--mint);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 48px;
+  }
+}
+
+/* Titulares revelados por líneas: ocultos hasta que GSAP los parte, solo si hay JS y movimiento */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    visibility: hidden;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -80px;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 12px 20px;
+  border-radius: 999px;
+}
+.skip-link:focus {
+  top: 16px;
 }

@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Salud Bienestar Publicaciones · web
 
-## Getting Started
+Web de Publicaciones Martín Casado S.L. (Salud Bienestar Publicaciones), distribuidores de Bioenergy Dreams en Leganés.
 
-First, run the development server:
+Estado: **prototipo** (home + ficha de la plancha) con tienda simulada. Contrato de diseño en [DESIGN.md](DESIGN.md).
+
+## Arrancar en local
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Dónde está cada cosa
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Qué | Dónde |
+| --- | --- |
+| Datos de la empresa (CIF, teléfono, dirección) | `src/lib/site.ts` |
+| Productos y categorías del prototipo | `src/lib/store/mock.ts` (al conectar Shopify, se gestionan desde su panel) |
+| Huecos de foto y fotos del fabricante | `src/lib/media.ts` y `public/fotos/fabricante/` |
+| Opiniones reales (la sección se oculta si está vacía) | `src/components/home/Opiniones.tsx` |
+| Catálogo de referencia | `docs/catalogo_bioenergy_dreams.md` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Fotos del fabricante
 
-## Learn More
+Se muestran mientras no tengamos respuesta de Bioenergy Dreams. Para ocultarlas y dejar huecos limpios:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+NEXT_PUBLIC_FOTOS_FABRICANTE=no
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Textos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Sin afirmaciones sanitarias (RD 1907/1996). Solo descanso, relax, comodidad, limpieza y datos técnicos "según el fabricante".
