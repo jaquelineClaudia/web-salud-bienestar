@@ -42,6 +42,8 @@ export type Product = {
   vendor: "Bioenergy Dreams";
   line?: "Bioenergy Home" | "Bioenergy for Life";
   collection: string;
+  /** Tipo de producto dentro de la categoría (filtro de la tienda). En Shopify: productType. */
+  type: string;
   summary: string;
   /** Frase corta para la sección de descripción de la ficha. */
   tagline?: string;

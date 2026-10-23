@@ -36,6 +36,7 @@ export const products: Product[] = [
   {
     id: "mock-plancha",
     handle: "plancha-portatil-multifuncion",
+    type: "Hogar",
     title: "Plancha portátil multifunción",
     vendorTitle: "Plancha con vapor, ozono y UV-C",
     vendor: "Bioenergy Dreams",
@@ -99,6 +100,7 @@ export const products: Product[] = [
   {
     id: "mock-aspirador",
     handle: "aspirador-sin-cables-cyclone-led",
+    type: "Hogar",
     title: "Aspirador sin cables Cyclone LED",
     vendor: "Bioenergy Dreams",
     line: "Bioenergy Home",
@@ -119,6 +121,7 @@ export const products: Product[] = [
   {
     id: "mock-shiatsu",
     handle: "centro-masaje-shiatsu-zen-premium",
+    type: "Masaje",
     title: "Centro de masaje Shiatsu ZEN Premium",
     vendor: "Bioenergy Dreams",
     line: "Bioenergy for Life",
@@ -134,6 +137,7 @@ export const products: Product[] = [
   {
     id: "mock-biosport",
     handle: "colchon-biosport",
+    type: "Colchones",
     title: "Colchón BioSport",
     vendor: "Bioenergy Dreams",
     collection: "descanso",
@@ -148,6 +152,7 @@ export const products: Product[] = [
   {
     id: "mock-electro-scudo",
     handle: "colchon-electro-scudo-biobalance",
+    type: "Colchones",
     title: "Colchón Electro-Scudo Biobalance",
     vendor: "Bioenergy Dreams",
     collection: "descanso",
@@ -161,6 +166,7 @@ export const products: Product[] = [
   {
     id: "mock-oxygen-clinic",
     handle: "colchon-oxygen-clinic",
+    type: "Colchones",
     title: "Colchón Oxygen Clinic",
     vendor: "Bioenergy Dreams",
     collection: "descanso",
@@ -174,6 +180,7 @@ export const products: Product[] = [
   {
     id: "mock-adapta",
     handle: "almohada-adapta-3-0",
+    type: "Almohadas",
     title: "Almohada ADAPTA 3.0 configurable",
     vendor: "Bioenergy Dreams",
     collection: "descanso",
@@ -188,6 +195,7 @@ export const products: Product[] = [
   {
     id: "mock-biopure",
     handle: "biopure-water",
+    type: "Hogar",
     title: "BIOPURE WATER",
     vendor: "Bioenergy Dreams",
     line: "Bioenergy Home",

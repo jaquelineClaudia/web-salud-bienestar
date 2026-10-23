@@ -39,10 +39,22 @@ export const slots: Record<string, Slot> = {
   biopure: { brief: "Equipo BIOPURE WATER en una cocina", manufacturer: true },
   "visita-casa": { brief: "Asesor enseñando un colchón en el salón de una pareja mayor" },
   videollamada: { brief: "Persona en casa en videollamada con una tablet" },
+  equipo: { brief: "el equipo, en el local o con un cliente" },
+  "equipo-1": { brief: "retrato de una persona del equipo" },
+  "equipo-2": { brief: "retrato de una persona del equipo" },
 };
 
 export function resolveSlot(id: string): { src?: string; brief: string; cutout?: boolean } {
-  const s = slots[id] ?? { brief: id };
+  // Fotos que vienen de Shopify: el identificador es la propia URL.
+  if (id.startsWith("https://")) return { src: id, brief: "", cutout: true };
+  const s = slots[id] ?? { brief: id.startsWith("sin-foto-") ? "Foto del producto pendiente" : id };
   if (s.manufacturer && !USE_MANUFACTURER_PHOTOS) return { brief: s.brief };
   return { src: s.src, brief: s.brief, cutout: s.cutout };
 }
+
+// Fotos de producto del catálogo que no tienen hueco propio arriba.
+Object.assign(slots, {
+  "laser-cervical-ems": { brief: "Láser Cervical Profesional EMS", src: `${F}/laser-cervical-ems.webp`, manufacturer: true, cutout: true },
+  "laser-duetech": { brief: "Láser DueTech Frío-Calor", src: `${F}/laser-duetech.webp`, manufacturer: true, cutout: true },
+  "artrosi-stop-mano": { brief: "Artrosi Stop Mano", src: `${F}/artrosi-stop-mano.webp`, manufacturer: true, cutout: true },
+} satisfies Record<string, Slot>);

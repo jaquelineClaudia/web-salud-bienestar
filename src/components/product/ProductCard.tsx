@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "motion/react";
 import { ImageSlot } from "@/components/ui/ImageSlot";
-import { formatMoney } from "@/lib/store";
+import { formatMoney } from "@/lib/store/money";
 import type { Product } from "@/lib/store/types";
 
 /** Ficha de producto en listados. Con ratón se inclina un poco hacia el puntero. */
