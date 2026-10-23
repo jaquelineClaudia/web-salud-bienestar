@@ -4,7 +4,8 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Minus, Plus, X } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 import { useCart } from "./store";
-import { formatMoney, sumMoney } from "@/lib/store";
+import { site } from "@/lib/site";
+import { formatMoney, sumMoney } from "@/lib/store/money";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import { Button, ButtonLink } from "@/components/ui/Button";
 
@@ -13,6 +14,25 @@ export function CartDrawer() {
   const reduce = useReducedMotion();
   const panel = useRef<HTMLDivElement>(null);
   const [demoNote, setDemoNote] = useState(false);
+  const [paying, setPaying] = useState(false);
+
+  async function checkout() {
+    setPaying(true);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lines: lines.map((l) => ({ handle: l.handle, quantity: l.quantity })) }),
+      });
+      const data = (await res.json()) as { url?: string; demo?: boolean };
+      if (data.url) return window.location.assign(data.url);
+      setDemoNote(true);
+    } catch {
+      setDemoNote(true);
+    } finally {
+      setPaying(false);
+    }
+  }
 
   useEffect(() => {
     if (!open) return;
@@ -98,11 +118,11 @@ export function CartDrawer() {
                     <span>Total</span>
                     <span className="font-serif text-[1.75rem]">{sumMoney(lines)}</span>
                   </div>
-                  <p className="text-[0.9375rem] text-ink-soft">Pago con tarjeta, Bizum o a plazos. Los precios del prototipo son orientativos.</p>
-                  <Button className="w-full" onClick={() => setDemoNote(true)}>Ir a pagar</Button>
+                  <p className="text-[0.9375rem] text-ink-soft">Pago seguro con tarjeta, Bizum o a plazos.</p>
+                  <Button className="w-full" onClick={checkout} disabled={paying}>{paying ? "Abriendo la caja…" : "Ir a pagar"}</Button>
                   {demoNote && (
                     <p role="status" className="rounded-[12px] bg-mint p-4 text-[0.9375rem]">
-                      Esto es un prototipo: el pago está desactivado. Cuando conectemos Shopify, aquí se abre su caja segura.
+                      El pago online aún no está activo. Llámanos al {site.telefono} y cerramos tu pedido por teléfono.
                     </p>
                   )}
                 </div>

@@ -1,19 +1,35 @@
-import { collections, products } from "./mock";
-import type { Collection, Money, Product } from "./types";
+import { collections as localCollections, products as base } from "./mock";
+import { catalogo } from "./catalogo";
+import { shopifyCollections, shopifyEnabled, shopifyProducts } from "./shopify";
+import type { Collection, Product } from "./types";
 
-// Punto único de acceso a la tienda. Hoy lee la tienda simulada; al conectar Shopify
-// se cambia esta capa por llamadas a la API Storefront con las mismas firmas.
+// Punto único de acceso a la tienda. Sin Shopify configurado lee la tienda simulada;
+// con SHOPIFY_STORE_DOMAIN y SHOPIFY_STOREFRONT_TOKEN lee Shopify (ver shopify.ts).
+
+const localProducts = [...base, ...catalogo];
 
 export async function getProducts(): Promise<Product[]> {
-  return products;
+  if (!shopifyEnabled) return localProducts;
+  try {
+    return await shopifyProducts(localProducts);
+  } catch (e) {
+    console.error(e);
+    return localProducts;
+  }
 }
 
 export async function getProduct(handle: string): Promise<Product | undefined> {
-  return products.find((p) => p.handle === handle);
+  return (await getProducts()).find((p) => p.handle === handle);
 }
 
 export async function getCollections(): Promise<Collection[]> {
-  return collections;
+  if (!shopifyEnabled) return localCollections;
+  try {
+    return await shopifyCollections(localCollections);
+  } catch (e) {
+    console.error(e);
+    return localCollections;
+  }
 }
 
 export async function getFeatured(): Promise<Product[]> {
@@ -26,18 +42,17 @@ export async function getFeatured(): Promise<Product[]> {
     "almohada-adapta-3-0",
     "biopure-water",
   ];
+  const products = await getProducts();
   return order.map((h) => products.find((p) => p.handle === h)!).filter(Boolean);
 }
 
 export async function getRelated(product: Product, limit = 3): Promise<Product[]> {
+  const products = await getProducts();
   const same = products.filter((p) => p.handle !== product.handle && p.collection === product.collection);
   const rest = products.filter((p) => p.handle !== product.handle && p.collection !== product.collection);
   return [...same, ...rest].slice(0, limit);
 }
 
-const fmt = new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR" });
-export const formatMoney = (m?: Money) => (m ? fmt.format(Number(m.amount)) : "Precio a consultar");
-export const sumMoney = (lines: { price?: Money; quantity: number }[]) =>
-  fmt.format(lines.reduce((t, l) => t + (l.price ? Number(l.price.amount) * l.quantity : 0), 0));
+export { formatMoney, sumMoney } from "./money";
 
 export type { Collection, Product } from "./types";

@@ -3,8 +3,9 @@ import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { WhatsAppFab } from "@/components/layout/WhatsAppFab";
+import { Assistant } from "@/components/assistant/Assistant";
 import { CookieBanner } from "@/components/layout/CookieBanner";
+import { Analytics } from "@/components/layout/Analytics";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { site } from "@/lib/site";
 
@@ -61,9 +62,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         <main id="contenido" className="pt-[72px]">{children}</main>
         <Footer />
-        <WhatsAppFab />
+        <Assistant />
         <CartDrawer />
         <CookieBanner />
+        <Analytics />
       </body>
     </html>
   );

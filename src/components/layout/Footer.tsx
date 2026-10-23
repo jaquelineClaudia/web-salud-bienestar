@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { legal, nav, site, whatsappUrl } from "@/lib/site";
+import { CookieSettingsButton } from "./CookieSettingsButton";
 
 export function Footer() {
   return (
@@ -39,6 +40,7 @@ export function Footer() {
           {legal.map((l) => (
             <li key={l.href}><Link href={l.href} className="underline-offset-4 hover:underline">{l.label}</Link></li>
           ))}
+          <li><CookieSettingsButton className="underline-offset-4 hover:underline" /></li>
         </ul>
       </div>
     </footer>
