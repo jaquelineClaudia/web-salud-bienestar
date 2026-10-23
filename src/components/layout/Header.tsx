@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -22,9 +23,12 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line/60 bg-paper/85 backdrop-blur-md">
       <div className="wrap flex h-[72px] items-center justify-between gap-6">
-        <Link href="/" className="flex flex-col leading-none" aria-label="Salud Bienestar Publicaciones, inicio">
-          <span className="font-serif text-[1.375rem] tracking-[-0.01em]">Salud Bienestar</span>
-          <span className="mt-1 text-[0.8125rem] text-ink-soft">Publicaciones · Leganés</span>
+        <Link href="/" className="flex items-center gap-3" aria-label="Salud Bienestar Publicaciones, inicio">
+          <Image src="/marca/logo-verde-192.png" alt="" width={48} height={40} priority className="h-10 w-auto" />
+          <span className="flex flex-col leading-none">
+            <span className="font-serif text-[1.375rem] tracking-[-0.01em]">Salud Bienestar</span>
+            <span className="mt-1 text-[0.8125rem] text-ink-soft">Publicaciones · Leganés</span>
+          </span>
         </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">

@@ -15,6 +15,7 @@ export function Cierre() {
           <div className="flex flex-wrap gap-3">
             <ButtonLink href={whatsappUrl()} target="_blank" rel="noopener">Escríbenos por WhatsApp</ButtonLink>
           </div>
+          <a href={`mailto:${site.email}`} className="break-all text-[1.125rem] underline underline-offset-4">{site.email}</a>
         </div>
       </div>
     </section>

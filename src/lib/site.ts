@@ -2,7 +2,7 @@
 export const site = {
   nombreComercial: "Salud Bienestar Publicaciones",
   razonSocial: "Publicaciones Martín Casado S.L.",
-  cif: "RELLENAR", // CIF de la empresa
+  cif: "RELLENAR", // CIF: no se muestra en el pie; solo en Aviso legal, donde lo exige la LSSI (art. 10)
   datosRegistrales: "RELLENAR", // Registro Mercantil de Madrid, tomo, folio, hoja
   direccion: "C. Puerto de la Morcuera, 13",
   cp: "28919",

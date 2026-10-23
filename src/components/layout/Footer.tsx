@@ -11,9 +11,9 @@ export function Footer() {
             Visitas a domicilio en Leganés y la Comunidad de Madrid, o videollamada si lo prefieres.
           </p>
           <div className="mt-8 flex flex-col gap-2 text-[1.25rem]">
-            <a href={`tel:${site.telefonoE164}`} className="underline-offset-4 hover:underline">{site.telefono}</a>
-            <a href={whatsappUrl()} className="underline-offset-4 hover:underline">WhatsApp</a>
-            <a href={`mailto:${site.email}`} className="break-all underline-offset-4 hover:underline">{site.email}</a>
+            <a href={`tel:${site.telefonoE164}`} className="underline underline-offset-4 hover:decoration-2">Llamar al {site.telefono}</a>
+            <a href={whatsappUrl()} target="_blank" rel="noopener" className="underline underline-offset-4 hover:decoration-2">Escribir por WhatsApp</a>
+            <a href={`mailto:${site.email}`} className="break-all underline underline-offset-4 hover:decoration-2">{site.email}</a>
           </div>
         </div>
         <nav aria-label="Pie" className="md:col-span-3 md:col-start-7">
@@ -30,8 +30,6 @@ export function Footer() {
           {site.direccion}
           <br />
           {site.cp} {site.ciudad}
-          <br />
-          CIF: {site.cif}
           <br />
           <span className="mt-3 block">Distribuidores de {site.marca}.</span>
         </address>
