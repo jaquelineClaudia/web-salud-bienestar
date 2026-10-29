@@ -78,8 +78,10 @@ export async function shopifyCollections(locals: Collection[]): Promise<Collecti
   const data = await storefront<{ collections: { nodes: { handle: string; title: string; description: string; image: SImage | null }[] } }>(
     `{ collections(first: 20) { nodes { handle title description image { url altText } } } }`,
   );
-  return data.collections.nodes
-    .filter((c) => c.handle !== "frontpage")
+  const nodes = data.collections.nodes.filter((c) => c.handle !== "frontpage");
+  // Sin colecciones creadas en Shopify, se usan las categorías de la web.
+  if (!nodes.length) return locals;
+  return nodes
     .map((c) => {
       const local = locals.find((l) => l.handle === c.handle);
       return {
