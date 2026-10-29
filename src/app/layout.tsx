@@ -26,7 +26,8 @@ export const metadata: Metadata = {
   },
   description:
     "Distribuidores de Bioenergy Dreams en Leganés y Madrid: colchones fabricados en España, centro de masaje Shiatsu y plancha con ozono. Asesoramiento en tu casa.",
-  robots: { index: false, follow: false }, // prototipo: no indexar
+  robots: { index: site.indexar, follow: site.indexar },
+  verification: site.googleVerification ? { google: site.googleVerification } : undefined,
 };
 
 export const viewport: Viewport = { themeColor: "#f3f5f1" };
