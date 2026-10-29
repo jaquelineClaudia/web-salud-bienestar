@@ -12,7 +12,12 @@ export const site = {
   email: "publicacionesmcsl@gmail.com",
   horario: "Te atendemos cuando te venga bien",
   marca: "Bioenergy Dreams",
-  url: "https://www.saludbienestarpublicaciones.es", // provisional hasta tener dominio
+  // Dirección pública de la web. Al tener dominio propio, se cambia aquí (o con NEXT_PUBLIC_SITE_URL en Vercel).
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://web-salud-bienestar.vercel.app",
+  // false = Google no la muestra. Se pasa a true cuando la empresa decida salir en buscadores.
+  indexar: false,
+  // Código de verificación de Google Search Console (método "Etiqueta HTML", solo el valor de content).
+  googleVerification: "",
   linkedin: "https://www.linkedin.com/",
 } as const;
 
