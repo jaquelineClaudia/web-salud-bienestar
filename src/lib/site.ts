@@ -17,7 +17,7 @@ export const site = {
   // false = Google no la muestra. Se pasa a true cuando la empresa decida salir en buscadores.
   indexar: false,
   // Código de verificación de Google Search Console (método "Etiqueta HTML", solo el valor de content).
-  googleVerification: "",
+  googleVerification: "Q3TuI5RSDVj8hnFFeP03a9Nr9PzHiClc3WqdBQbcAuU",
   linkedin: "https://www.linkedin.com/",
 } as const;
 
