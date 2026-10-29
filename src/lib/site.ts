@@ -15,7 +15,7 @@ export const site = {
   // Dirección pública de la web. Al tener dominio propio, se cambia aquí (o con NEXT_PUBLIC_SITE_URL en Vercel).
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://web-salud-bienestar.vercel.app",
   // false = Google no la muestra. Se pasa a true cuando la empresa decida salir en buscadores.
-  indexar: false,
+  indexar: true,
   // Código de verificación de Google Search Console (método "Etiqueta HTML", solo el valor de content).
   googleVerification: "Q3TuI5RSDVj8hnFFeP03a9Nr9PzHiClc3WqdBQbcAuU",
   linkedin: "https://www.linkedin.com/",
