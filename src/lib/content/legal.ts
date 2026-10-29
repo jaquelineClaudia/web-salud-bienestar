@@ -25,7 +25,7 @@ export const legalPages: LegalPage[] = [
           `Domicilio: ${domicilio}`,
           `Correo: ${site.email}`,
           `Teléfono: ${site.telefono}`,
-          `Datos registrales: ${site.datosRegistrales}`,
+          ...(site.datosRegistrales ? [`Datos registrales: ${site.datosRegistrales}`] : []),
         ],
       },
       { h: "Objeto", p: [`Esta web presenta y vende los productos de ${site.marca} que distribuimos, y permite pedir asesoramiento o una demostración.`] },
