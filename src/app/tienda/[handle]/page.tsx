@@ -46,7 +46,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
             <div className="mt-8 flex items-baseline gap-3">
               <p className="font-serif text-[2.5rem] leading-none">{formatMoney(product.price)}</p>
-              <p className="text-[0.9375rem] text-ink-soft">IVA incluido</p>
+              {product.price && <p className="text-[0.9375rem] text-ink-soft">IVA incluido</p>}
             </div>
             {product.priceIsProvisional && (
               <p className="mt-2 text-[0.9375rem] text-ink-soft">PVP del fabricante, orientativo mientras confirmamos nuestro precio.</p>
@@ -62,7 +62,11 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             )}
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              <AddToCart product={product} label="Comprar" />
+              {product.price ? (
+                <AddToCart product={product} label="Comprar" />
+              ) : (
+                <ButtonLink href={whatsappUrl(`Hola, ¿qué precio tiene ${product.title}?`)} target="_blank" rel="noopener">Pedir precio</ButtonLink>
+              )}
               <ButtonLink href={`/asesoramiento?producto=${product.handle}`} variant="ghost">Pedir asesoramiento</ButtonLink>
             </div>
             <a href={whatsappUrl(`Hola, tengo una pregunta sobre: ${product.title}`)} target="_blank" rel="noopener" className="mt-5 inline-flex min-h-[44px] items-center underline underline-offset-4">
