@@ -11,6 +11,24 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "artrosis-y-artritis",
+    title: "Artrosis y artritis: en qué se diferencian y cómo cuidarte en el día a día",
+    summary: "Dos palabras que se confunden mucho. Qué es cada una, qué opciones hay y qué hábitos suelen recomendar los profesionales.",
+    date: "2026-10-30",
+    minutes: 6,
+    slot: "artrosi-stop-mano",
+    body: [
+      { p: ["Este artículo es solo informativo y no sustituye la opinión de tu médico ni de tu fisioterapeuta. Si tienes dolor o molestias en las articulaciones, lo primero es que te vea un profesional."] },
+      { p: ["Artrosis y artritis suenan casi igual y muchas personas las usan como si fueran lo mismo. No lo son, y entender la diferencia ayuda a hablar con el médico con más claridad."] },
+      { h: "Qué es la artrosis", p: ["La artrosis es un desgaste del cartílago, el tejido que recubre los extremos de los huesos y hace que la articulación se deslice con suavidad. Aparece sobre todo a partir de los 50 años y es muy frecuente en rodillas, caderas, manos y columna.", "Suele notarse como rigidez al levantarse o después de estar un rato quieto, que mejora al ponerse en marcha."] },
+      { h: "Qué es la artritis", p: ["La artritis es una inflamación de la articulación. No es una sola enfermedad: hay muchos tipos, como la artritis reumatoide, la gota o la artritis psoriásica, y pueden aparecer a cualquier edad.", "Por eso es tan importante el diagnóstico: el médico de familia o el reumatólogo son quienes pueden decir qué tipo es y cómo abordarlo."] },
+      { h: "Hay muchas formas de abordarlas", p: ["No existe una receta única. Según el caso, los profesionales combinan ejercicio adaptado, fisioterapia, control del peso, medicación pautada por el médico, ayudas como plantillas o férulas y, en algunos casos, otros tratamientos que decide el especialista.", "Lo que funciona a una persona puede no servirle a otra, así que conviene revisar el plan con tu médico de vez en cuando."] },
+      { h: "Moverse, con cabeza", p: ["Casi todas las guías coinciden en que mantenerse activo es parte del cuidado. Estos son ejercicios suaves que los fisioterapeutas suelen proponer; pregunta al tuyo cuáles te convienen y cuántas repeticiones hacer:", "Caminar a diario, a tu ritmo y con buen calzado. Nadar o hacer aquagym, porque el agua reduce el peso sobre las articulaciones. Bicicleta estática con poca resistencia. Tai chi o yoga suave para el equilibrio y la flexibilidad.", "Para las manos: abrir y cerrar el puño despacio, tocar con el pulgar la punta de cada dedo y apretar una pelota blanda unos segundos. Para las rodillas: sentado en una silla, estirar la pierna y mantenerla unos segundos.", "Si un ejercicio te molesta, para y coméntalo con tu fisioterapeuta."] },
+      { h: "Hábitos que ayudan en el día a día", p: ["Mantener un peso saludable, que se nota sobre todo en rodillas y caderas. Comer variado, al estilo de la dieta mediterránea. Alternar posturas y no estar mucho rato en la misma posición. Usar herramientas con mango grueso si te cuesta agarrar cosas pequeñas.", "Y descansar bien. Un colchón y una almohada adecuados hacen que la noche sea más cómoda y que te levantes con mejor ánimo para moverte al día siguiente."] },
+      { h: "Un rato de relax para tus manos", p: ["En nuestra tienda tenemos el Artrosi Stop Mano, de la línea Bioenergy for Life: un equipo para la mano pensado para tus ratos de relax y comodidad en casa. No es un medicamento ni un tratamiento, y no sustituye nada de lo que te haya indicado tu médico o tu fisioterapeuta.", "Si te interesa, te lo enseñamos funcionando en una visita o por videollamada y te contamos sus características técnicas según el fabricante, sin compromiso. Si estás en tratamiento, consulta antes con tu médico si es adecuado para ti."] },
+    ],
+  },
+  {
     slug: "como-elegir-colchon-en-casa",
     title: "Cómo elegir colchón sin equivocarte: cinco preguntas antes de comprar",
     summary: "Medida, firmeza, cómo duermes y con quién. Lo que te preguntaremos en la visita, para que llegues con las respuestas.",
