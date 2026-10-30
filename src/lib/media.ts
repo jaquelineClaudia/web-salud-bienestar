@@ -42,6 +42,7 @@ export const slots: Record<string, Slot> = {
   equipo: { brief: "el equipo, en el local o con un cliente" },
   "equipo-1": { brief: "retrato de una persona del equipo" },
   "equipo-2": { brief: "retrato de una persona del equipo" },
+  "presoterapia-mano": { brief: "Masajeador de manos con presoterapia", src: "/fotos/presoterapia-mano.webp" },
 };
 
 export function resolveSlot(id: string): { src?: string; brief: string; cutout?: boolean } {

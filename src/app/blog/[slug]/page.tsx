@@ -4,12 +4,15 @@ import Link from "next/link";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import { ButtonLink } from "@/components/ui/Button";
 import { RevealLines } from "@/components/motion/Reveal";
-import { formatDate, getPost, posts } from "@/lib/content/blog";
+import { formatDate, getPost, publicados } from "@/lib/content/blog";
 
 type Params = { params: Promise<{ slug: string }> };
 
+// Cada hora vuelve a mirar la fecha: un artículo programado da 404 hasta su día.
+export const revalidate = 3600;
+
 export function generateStaticParams() {
-  return posts.map((p) => ({ slug: p.slug }));
+  return publicados().map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
