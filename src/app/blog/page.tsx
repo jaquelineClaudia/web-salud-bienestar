@@ -2,15 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { RevealLines, FadeUp } from "@/components/motion/Reveal";
 import { ImageSlot } from "@/components/ui/ImageSlot";
-import { formatDate, posts } from "@/lib/content/blog";
+import { formatDate, publicados } from "@/lib/content/blog";
 
 export const metadata: Metadata = {
   title: "Blog: descanso, relax y cuidado de la casa",
-  description: "Consejos sencillos para elegir colchón, planchar en vertical y crear un rincón de relax en casa.",
+  description: "Consejos sencillos sobre descanso, relax, cuidado de las manos y de la casa.",
 };
 
+// Cada hora vuelve a mirar qué artículos ya tocan publicarse.
+export const revalidate = 3600;
+
 export default function BlogPage() {
-  const [first, ...rest] = posts;
+  const [first, ...rest] = publicados();
   return (
     <div className="wrap pb-28 pt-12 md:pt-20">
       <RevealLines as="h1" onLoad className="max-w-[16ch] text-[clamp(2.75rem,6vw,5rem)]">Ideas para casa.</RevealLines>
