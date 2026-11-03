@@ -8,9 +8,11 @@
 export const USE_MANUFACTURER_PHOTOS = process.env.NEXT_PUBLIC_FOTOS_FABRICANTE !== "no";
 
 const F = "/fotos/fabricante";
+const unsplash = (id: string) => `https://images.unsplash.com/${id}?w=2000&q=75&auto=format&fit=crop`;
 
 /** cutout: foto de producto sin fondo, se muestra entera sobre un panel de color. */
-type Slot = { brief: string; src?: string; manufacturer?: boolean; cutout?: boolean };
+/** credit: autor de la foto, para fotos de bancos de imágenes libres (Unsplash). */
+type Slot = { brief: string; src?: string; manufacturer?: boolean; cutout?: boolean; credit?: string };
 
 export const slots: Record<string, Slot> = {
   "hero-dormitorio": { brief: "Dormitorio luminoso por la mañana", src: `${F}/dormitorio-black-superginseng.webp`, manufacturer: true },
@@ -43,7 +45,14 @@ export const slots: Record<string, Slot> = {
   "equipo-1": { brief: "retrato de una persona del equipo" },
   "equipo-2": { brief: "retrato de una persona del equipo" },
   "presoterapia-mano": { brief: "Masajeador de manos con presoterapia", src: "/fotos/presoterapia-mano.webp" },
+  // Fotos del blog de Unsplash (licencia libre, uso comercial permitido). Se cargan desde images.unsplash.com.
+  "blog-manos-crema": { brief: "Manos con un poco de crema", src: unsplash("photo-1619451427882-6aaaded0cc61"), credit: "Nataliya Melnychuk / Unsplash" },
+  "blog-paseo-parque": { brief: "Persona mayor paseando por un parque en otoño", src: unsplash("photo-1764628039015-222c6d30c68d"), credit: "Victoria Prymak / Unsplash" },
+  "blog-pareja-paseo": { brief: "Pareja mayor paseando de la mano", src: unsplash("photo-1790451933031-992d6722258e"), credit: "Bruno BD / Unsplash" },
 };
+
+/** Autor de la foto de un hueco, si hay que citarlo. */
+export const slotCredit = (id: string) => slots[id]?.src ? slots[id].credit : undefined;
 
 export function resolveSlot(id: string): { src?: string; brief: string; cutout?: boolean } {
   // Fotos que vienen de Shopify: el identificador es la propia URL.

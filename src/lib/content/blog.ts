@@ -6,10 +6,56 @@ export type Post = {
   date: string; // AAAA-MM-DD
   minutes: number;
   slot: string;
-  body: { h?: string; p: string[] }[];
+  /** Producto de la tienda del que habla el artículo: sale un enlace a su ficha al final. */
+  product?: { handle: string; title: string };
+  /** img: foto opcional debajo de la sección (hueco de src/lib/media.ts). */
+  body: { h?: string; p: string[]; img?: { slot: string; alt: string } }[];
 };
 
 export const posts: Post[] = [
+  {
+    slug: "espalda-baja-cargada-habitos",
+    title: "Espalda baja cargada: hábitos para el día a día y cuándo ir al médico",
+    summary: "Por qué se carga la zona lumbar, qué hábitos sencillos ayudan, las señales para consultar al médico y un rato de calor y relax en casa.",
+    date: "2026-11-04",
+    minutes: 6,
+    slot: "blog-paseo-parque",
+    product: { handle: "cinturon-laser-lumbar-abdominal", title: "Cinturón Láser Lumbar Abdominal" },
+    body: [
+      { p: ["Este artículo es solo informativo y no sustituye la opinión de tu médico ni de tu fisioterapeuta. Si tienes dolor de espalda, lo primero es que te vea un profesional."] },
+      { p: ["Agacharse a coger la compra, pasar horas sentado o dormir en un colchón que ya no sujeta. La parte baja de la espalda, la zona lumbar, aguanta mucho en el día a día y es de las que antes se quejan. Es una de las molestias que más nos comentan en las visitas por Leganés y la zona sur de Madrid."] },
+      { h: "¿Por qué se carga la zona lumbar?", p: [
+        "La zona lumbar sostiene buena parte del peso del cuerpo y trabaja en casi todos los movimientos: agacharse, girarse, levantarse de la silla o cargar peso.",
+        "Algunas causas habituales de esa sensación de espalda cargada son pasar muchas horas sentado o de pie en la misma postura, levantar peso doblando la espalda en lugar de las rodillas, moverse poco, el estrés y el cansancio, y un colchón o una silla que ya no dan buen apoyo.",
+        "Con los años también aparecen cambios en la columna, como el desgaste de los discos o la artrosis. Por eso, si la molestia dura o va a más, es importante que la valore un médico.",
+      ] },
+      { h: "Hábitos sencillos que ayudan", p: [
+        "1. Sigue moviéndote. Salvo que el médico te diga otra cosa, quedarse en la cama no suele ser buena idea. Caminar un poco cada día, a tu ritmo, es de lo que más se recomienda.",
+        "2. Cambia de postura. Si pasas mucho rato sentado, levántate cada 30 o 45 minutos y da unos pasos.",
+        "3. Siéntate con apoyo. Espalda pegada al respaldo, pies apoyados en el suelo y, si hace falta, un cojín pequeño en la zona lumbar.",
+        "4. Agáchate con las rodillas. Para coger peso del suelo, dobla las rodillas, acerca el objeto al cuerpo y no gires la espalda mientras lo levantas.",
+        "5. Reparte la carga. Mejor dos bolsas pequeñas, una en cada mano, que una muy pesada. Y si puedes, usa un carro de la compra.",
+        "6. Cuida el descanso. Un colchón hundido o demasiado blando hace que la espalda no descanse bien. Como orientación, se suele revisar cada 8 a 10 años.",
+        "7. Busca tu rato de calma. Una ducha templada, unos estiramientos suaves que te haya enseñado tu fisioterapeuta o unos minutos tumbado con las piernas apoyadas en alto ayudan a desconectar al final del día.",
+      ], img: { slot: "blog-pareja-paseo", alt: "Una pareja mayor pasea de la mano por una calle soleada" } },
+      { h: "¿Cuándo hay que ir al médico?", p: [
+        "Pide cita con tu médico de cabecera si el dolor no mejora en unas semanas, si te despierta por la noche o si va a más.",
+        "Ve a urgencias si el dolor aparece tras una caída o un golpe; si se acompaña de fiebre; si notas hormigueo, adormecimiento o pérdida de fuerza en una pierna, o si notas adormecida la zona de las ingles o tienes problemas para controlar la orina o las heces.",
+      ] },
+      { h: "Un rato de calor y relax para la espalda, en casa", p: [
+        "Muchas personas disfrutan de un rato de calor en la espalda al final del día, con una manta o una bolsa de agua caliente. Si buscas algo más cómodo, tenemos un cinturón de masaje con calor, vibración y luz roja.",
+        "Se ajusta con velcro a la cintura y también puede colocarse en otras zonas, como hombros, codo, pierna o rodilla. Tiene calor regulable en 4 niveles, de 40 a 55 °C, 4 modos de vibración y un panel de luces LED rojas e infrarrojas (685 y 895 nm). Funciona sin cables, con batería recargable por USB, y se maneja desde una pantalla con botones. Datos técnicos según el fabricante.",
+        "Es un aparato de bienestar y relax, no un tratamiento médico. Empieza siempre por el calor más bajo y no lo uses mientras duermes. Si estás embarazada, llevas marcapasos, tienes diabetes, poca sensibilidad en la piel, heridas en la zona o estás en tratamiento, consulta antes con tu médico.",
+      ] },
+      { h: "Preguntas frecuentes", p: [
+        "¿Solo sirve para la espalda? No. Por su forma de cinturón se puede colocar en la cintura, los hombros, el codo, la pierna o la rodilla.",
+        "¿Se puede usar sentado en el sofá? Sí. No tiene cables, así que puedes usarlo sentado o tumbado mientras lees o ves la tele.",
+        "¿Es difícil de usar? No. Tiene botón de encendido, selector de calor, de masaje y de intensidad de la luz. En la visita te enseñamos a usarlo.",
+        "¿Se puede pagar a plazos? Sí, con financiación de hasta 48 meses.",
+      ] },
+      { h: "¿Quieres probarlo en casa?", p: ["Te lo enseñamos en tu casa, con calma y sin compromiso. Atendemos en Leganés, Getafe, Fuenlabrada, Parla, Móstoles, Alcorcón, Madrid capital y Toledo, o puedes venir a vernos al Centro Comercial Prado Overa, planta baja, oficina 12, en Leganés."] },
+    ],
+  },
   {
     slug: "manos-cansadas-rigidas-habitos",
     title: "Manos cansadas y rígidas: 7 hábitos que ayudan en el día a día",
@@ -17,6 +63,7 @@ export const posts: Post[] = [
     date: "2026-11-01",
     minutes: 6,
     slot: "presoterapia-mano",
+    product: { handle: "presoterapia-mano-mister-relax", title: "Presoterapia Mano Mister Relax" },
     body: [
       { p: ["Este artículo es solo informativo y no sustituye la opinión de tu médico. Si tienes molestias en las manos que no se van, lo primero es que te vea un profesional."] },
       { p: ["Abrir un bote, abrocharse un botón o escribir un mensaje en el móvil. Son gestos pequeños, pero cuando las manos amanecen rígidas o llegan cansadas al final del día, se notan mucho. Es algo que nos cuentan a menudo en las visitas que hacemos por Leganés y la zona sur de Madrid, sobre todo cuando llega el frío."] },
@@ -33,7 +80,7 @@ export const posts: Post[] = [
         "5. Usa ayudas para los gestos difíciles. Abrebotes, cubiertos con mango grueso o bolígrafos anchos hacen que la mano trabaje con menos esfuerzo.",
         "6. Muévete. Caminar y mantenerse activo ayuda a que todo el cuerpo, manos incluidas, se sienta mejor.",
         "7. Date un rato de relax. Un masaje suave en las palmas y los dedos, con un poco de crema, es un pequeño momento de cuidado para ti.",
-      ] },
+      ], img: { slot: "blog-manos-crema", alt: "Unas manos se reparten un poco de crema" } },
       { h: "¿Cuándo hay que ir al médico?", p: [
         "Estos consejos son para el bienestar del día a día y no sustituyen a una consulta. Pide cita con tu médico de cabecera si notas rigidez por la mañana que dura más de media hora; hinchazón, enrojecimiento o calor en alguna articulación; hormigueo o adormecimiento en los dedos, sobre todo por la noche; pérdida de fuerza, como que se te caigan las cosas; dedos que se ponen blancos o morados con el frío, o un dolor que aparece de repente o no mejora.",
       ] },
@@ -121,8 +168,11 @@ export const posts: Post[] = [
 const hoyEnMadrid = () => new Date().toLocaleDateString("en-CA", { timeZone: "Europe/Madrid" });
 
 /** Artículos ya publicados (fecha de hoy o anterior), del más nuevo al más antiguo. */
+// En las vistas previas de Vercel (no en la web publicada) se ven también los programados, para revisarlos.
+const esVistaPrevia = process.env.VERCEL_ENV === "preview";
+
 export const publicados = () =>
-  posts.filter((p) => p.date <= hoyEnMadrid()).sort((a, b) => b.date.localeCompare(a.date));
+  posts.filter((p) => esVistaPrevia || p.date <= hoyEnMadrid()).sort((a, b) => b.date.localeCompare(a.date));
 
 export const getPost = (slug: string) => publicados().find((p) => p.slug === slug);
 export const formatDate = (d: string) =>

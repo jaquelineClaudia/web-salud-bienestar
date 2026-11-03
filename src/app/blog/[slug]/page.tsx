@@ -5,6 +5,7 @@ import { ImageSlot } from "@/components/ui/ImageSlot";
 import { ButtonLink } from "@/components/ui/Button";
 import { RevealLines } from "@/components/motion/Reveal";
 import { formatDate, getPost, publicados } from "@/lib/content/blog";
+import { slotCredit } from "@/lib/media";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -31,19 +32,34 @@ export default async function PostPage({ params }: Params) {
         <p className="mt-6 text-ink-soft">{formatDate(post.date)} · {post.minutes} min de lectura</p>
       </header>
       <div className="wrap mt-12 max-w-[1120px]">
-        <ImageSlot slot={post.slot} alt="" ratio="16/9" tone="mint" />
+        <ImageSlot slot={post.slot} alt="" ratio="16/9" tone="mint" priority sizes="(min-width: 1120px) 1120px, 100vw" />
+        <Credit slot={post.slot} />
       </div>
       <div className="wrap mt-14 max-w-[760px] space-y-10 text-[1.1875rem]">
         {post.body.map((b, i) => (
           <section key={i}>
             {b.h && <h2 className="mb-4 text-[1.875rem]">{b.h}</h2>}
             {b.p.map((t) => <p key={t} className="mt-3 first:mt-0">{t}</p>)}
+            {b.img && (
+              <figure className="mt-10">
+                <ImageSlot slot={b.img.slot} alt={b.img.alt} ratio="3/2" tone="sage" sizes="(min-width: 760px) 760px, 100vw" />
+                <Credit slot={b.img.slot} />
+              </figure>
+            )}
           </section>
         ))}
-        <div className="border-t border-line pt-10">
+        <div className="flex flex-wrap gap-4 border-t border-line pt-10">
+          {post.product && (
+            <ButtonLink href={`/tienda/${post.product.handle}`} variant="ghost">Ver {post.product.title}</ButtonLink>
+          )}
           <ButtonLink href="/asesoramiento">Pedir asesoramiento</ButtonLink>
         </div>
       </div>
     </article>
   );
+}
+
+function Credit({ slot }: { slot: string }) {
+  const credit = slotCredit(slot);
+  return credit ? <p className="mt-3 text-[0.875rem] text-ink-soft">Foto: {credit}</p> : null;
 }
